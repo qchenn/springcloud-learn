@@ -1,0 +1,29 @@
+server:
+  port: 8185
+spring:
+  application:
+    name: sentinel-test
+  cloud:
+    sentinel:
+      transport:
+        port: 8791                       #端口配置会在应用对应的机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互
+        dashboard: localhost:8080       #sentinel 控制台地址
+
+      log:
+        dir:                            #Sentinel 日志文件所在的目录
+        switch-pid: false               #Sentinel 日志文件名是否需要带上 pid
+
+                                        #springcloud集成sentinel的配置  https://github.com/alibaba/spring-cloud-alibaba/wiki/Sentinel
+
+
+logging:
+  level:
+    org.springframework.cloud: debug   #设置指定包的日志级别
+
+
+#mybatis:
+#  mapperLocations: classpath:mapper/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # ???????
+#
+
