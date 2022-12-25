@@ -1,0 +1,55 @@
+
+server:
+  port: 8183
+spring:
+  application:
+    name: seata-order-service
+  cloud:
+#    alibaba:
+#      seata:
+#        tx-service-group: fsp_tx_group
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata-order
+    username: root
+    password: root1234
+#    AbstractUndoLogManager.flushUndoLogs可debug查看undolog日志镜像前后的数据
+logging:
+ level:
+  io:
+#   seata: debug
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 控制台输出日志
+
+
+
+seata:
+  enabled: true
+  application-id: order
+  tx-service-group: demo002-tx-group
+
+  service:
+    vgroupMapping:
+      demo002-tx-group: default
+
+  registry:
+    # support: nacos 、 eureka 、 redis 、 zk  、 consul 、 etcd3 、 sofa
+    type: nacos
+    preferred-networks: 30.240.*
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      namespace:
+      #      cluster: default
+      username:
+      password:
+      context-path:
+      ##if use MSE Nacos with auth, mutex with username/password attribute
+      #access-key: ""
+      #secret-key: ""
