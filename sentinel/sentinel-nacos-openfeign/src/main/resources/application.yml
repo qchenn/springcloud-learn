@@ -1,0 +1,31 @@
+server:
+  port: 8186
+spring:
+  application:
+    name: sentinel-nacos-openfign
+  cloud:
+    sentinel:
+      transport:
+        port: 8791                       #端口配置会在应用对应的机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互
+        dashboard: localhost:8080       #sentinel 控制台地址
+
+      log:
+        dir:                            #Sentinel 日志文件所在的目录
+        switch-pid: false               #Sentinel 日志文件名是否需要带上 pid
+
+        #springcloud集成sentinel的配置  https://github.com/alibaba/spring-cloud-alibaba/wiki/Sentinel
+
+      #动态规则扩展   https://github.com/alibaba/Sentinel/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-config
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+
+
+feign:
+  sentinel:
+    enabled: true   #集成openfeign
