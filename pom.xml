@@ -106,6 +106,4 @@
         </plugins>
     </build>
 
-<modules>  <module>canal.sample</module>
-  </modules>
 </project>
