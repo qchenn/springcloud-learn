@@ -1,0 +1,138 @@
+#https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+
+
+#发送指定路径的请求会匹配该路由
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user #路由的ID
+          uri: ${service-url.user-service}/user/{id} #匹配后路由地址
+          predicates: # 断言，路径相匹配的进行路由
+            - Path=/user/{id}
+
+        - id: order #路由的ID
+          uri: ${service-url.order-service}/order/{id} #匹配后路由地址
+          predicates: # 断言，路径相匹配的进行路由
+            - Path=/order/{id}
+
+
+#在指定时间之后的请求会匹配该路由。
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: after_route
+#          uri: ${service-url.user-service}/user/{id}
+#          predicates:
+#            - After=2022-12-30T16:29:00+08:00[Asia/Shanghai]
+
+
+#在指定时间之前的请求会匹配该路由。
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: before_route
+#          uri: ${service-url.user-service}/user/{id}
+#          predicates:
+#            - Before=2022-12-30T16:30:00+08:00[Asia/Shanghai]
+
+
+
+
+#  在指定时间区间内的请求会匹配该路由
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: before_route
+#          uri: ${service-url.user-service}/user/{id}
+#          predicates:
+#            - Between=2022-12-29T16:30:00+08:00[Asia/Shanghai], 2022-12-30T16:30:00+08:00[Asia/Shanghai]
+
+
+#带有指定Cookie的请求会匹配该路由
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: cookie_route
+#          uri: ${service-url.user-service}/user/{id}
+#          predicates:
+#            - Cookie=username,xm
+
+
+#带有指定请求头的请求会匹配该路由。
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: header_route
+#          uri: ${service-url.user-service}/user/{id}
+#          predicates:
+#            - Header=X-Request-Id, \d+
+
+
+
+
+#带有指定Host的请求会匹配该路由
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: host_route
+#          uri: ${service-url.user-service}/user/{id}
+#          predicates:
+#            - Host=**.google.com
+
+
+
+#发送指定方法的请求会匹配该路由
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: method_route
+#          uri: ${service-url.user-service}/user/{id}
+#          predicates:
+#            - Method=GET
+
+
+
+#  带指定查询参数的请求可以匹配该路由
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: query_route
+#          uri: ${service-url.user-service}/user/getByUsername
+#          predicates:
+#            - Query=username
+
+
+#从指定远程地址发起的请求可以匹配该路由
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: remoteaddr_route
+#          uri: ${service-url.user-service}/user/{id}
+#          predicates:
+#            - RemoteAddr=192.168.1.1/24
+
+
+
+#使用权重来路由相应请求，以下表示有80%的请求会被路由到localhost:8201，20%会被路由到localhost:8202
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: weight_high
+#          uri: http://localhost:8201
+#          predicates:
+#            - Weight=group1, 8
+#        - id: weight_low
+#          uri: http://localhost:8202
+#          predicates:
+#            - Weight=group1, 2
