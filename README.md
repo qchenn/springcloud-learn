@@ -1,6 +1,6 @@
 # springcloud-learn
  record learnning springcloud
-##系统环境
+## 系统环境
 
     jdk1.8
     spring-cloud-alibaba 2021.0.4.0
@@ -10,8 +10,8 @@
 
 
 
-##模块介绍
-###一、[seata](http://seata.io/zh-cn/docs/overview/what-is-seata.html)
+## 模块介绍
+### 一、[seata](http://seata.io/zh-cn/docs/overview/what-is-seata.html)
     1、环境要求
        seata-server（配置文件注意数据库驱动版本）
        mysql(需建立3个库，每个库所需表在各模块下)
@@ -25,7 +25,7 @@
 [seat四种模式介绍](https://seata.io/zh-cn/docs/dev/mode/at-mode.html)
 
 
-###二、[sentinel](https://github.com/alibaba/Sentinel/wiki)
+### 二、[sentinel](https://github.com/alibaba/Sentinel/wiki)
     1、使用sentinel的限流、熔断
     （1）环境要求
         sentinel控制台
@@ -33,12 +33,12 @@
     （2）模块解析
         sentinel-test：测试sentinel的限流、熔断
         sentinel-nacos-openfeign：使用openfeign服务调用、nacos注册中心，测试限流
-###三、[canal](https://github.com/alibaba/canal/wiki)
+### 三、[canal](https://github.com/alibaba/canal/wiki)
     1、使用canal监听binlog日志
     （1）环境要求
         安装canel-deployer：server、mysql
     （2）canal-test：canal客户端，实现对sql的监听
-###四、[gateway](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/)
+### 四、[gateway](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/)
 
     1、使用gataway路由、测试内置predicate断言、filter过滤器 [doc]()
     （1）环境要求
@@ -48,7 +48,7 @@
         order-service:订单服务
         user-service:用户服务
    
-###五、[nacos](https://github.com/alibaba/spring-cloud-alibaba/wiki)
+### 五、[nacos](https://github.com/alibaba/spring-cloud-alibaba/wiki)
     1、使用nacos注册中心、配置中心
     （1）环境要求
         需安装nacos
