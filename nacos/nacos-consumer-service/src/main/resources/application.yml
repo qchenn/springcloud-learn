@@ -1,0 +1,9 @@
+server:
+  port: 8191
+spring:
+  application:
+    name: nacos-consumer-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #注册中心地址

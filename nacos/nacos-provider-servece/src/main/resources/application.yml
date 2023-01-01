@@ -1,0 +1,20 @@
+server:
+  port: 8192
+spring:
+  application:
+    name: nacos-provider-service
+#  profiles:
+#    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #nacos注册中心地址
+      config:
+        server-addr: localhost:8848 #nacos配置中心地址
+        file-extension: yml #这里我们获取的yaml格式的配置
+        group: DEFAULT_GROUP #分组
+#springcloud2021.0.1 之后移除了bootstrap模块，可以直接通过springboot2.4.x后新增spring.config.import支持导入文件的方式来加载配置参数
+  config:
+    import:
+#     - optional:nacos:${spring.application.name}.${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+     - optional:nacos:nacos-provider-service.yml
